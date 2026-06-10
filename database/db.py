@@ -41,3 +41,10 @@ class Database:
         return user.get('session')
 
 db = Database(DB_URI, DB_NAME)
+        await self.col.update_one({'id': int(id)}, {'$set': {'session': session}})
+
+    async def get_session(self, id):
+        user = await self.col.find_one({'id': int(id)})
+        return user.get('session')
+
+db = Database(DB_URI, DB_NAME)
